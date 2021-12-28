@@ -1,7 +1,7 @@
-class Rotor(object):
+class Reflector(object):
 
-    def __init__(self, setting, startingPos):
-        self.charList = ['d', 'g', 'u', 'a', 's', 'm', 'z', 'e', 'r', 'b', 'c', 'i', 'h', 'v', 'y', 'p', 'k', 'x', 'q', 'n', 't', 'f', 'w', 'l', 'o', 'j']
+    def __init__(self):
+        self.charList = ['w', 'n', 't', 'e', 'd', 'm', 'z', 'q', 'r', 'p', 'x', 's', 'f', 'b', 'v', 'j', 'h', 'i', 'l', 'c', 'y', 'o', 'a', 'k', 'u', 'g']
 
 
     def getEncriptChar(self, myChar):

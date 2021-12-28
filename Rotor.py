@@ -12,6 +12,8 @@ class Rotor(object):
 
         self.startingPos = startingPos
         self.currPos = startingPos
+        for x in range(0, startingPos):
+            self.rotate()
 
     def rotate(self):
         tmp = self.charList[25]
@@ -22,8 +24,9 @@ class Rotor(object):
     def getEncriptChar(self, myChar):
         return self.charList[ord(myChar) - 97]
 
+    def getReverseChar(self, myChar):
+        i = 0
+        while self.charList[i] != myChar:
+            i = i + 1
+        return (chr(i + 97))
 
-myRotor = Rotor(1, 0)
-print(myRotor.getEncriptChar('a'))
-myRotor.rotate()
-print(myRotor.getEncriptChar('b'))
