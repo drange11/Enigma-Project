@@ -1,7 +1,7 @@
 class Reflector(object):
 
     def __init__(self):
-        self.charList = ['w', 'n', 't', 'e', 'd', 'm', 'z', 'q', 'r', 'p', 'x', 's', 'f', 'b', 'v', 'j', 'h', 'i', 'l', 'c', 'y', 'o', 'a', 'k', 'u', 'g']
+        self.charList = ['y', 'r', 'u', 'h', 'q', 's', 'l', 'd', 'p', 'x', 'n', 'g', 'o', 'k', 'm', 'i', 'e', 'b', 'f', 'z', 'c', 'w', 'v', 'j', 'a', 't']
 
 
     def getEncriptChar(self, myChar):

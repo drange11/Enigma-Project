@@ -2,16 +2,15 @@ class Rotor(object):
 
     def __init__(self, setting, startingPos):
         if(setting == 1):
-            self.charList = ['d', 'g', 'u', 'a', 's', 'm', 'z', 'e', 'r', 'b', 'c', 'i', 'h', 'v', 'y', 'p', 'k', 'x', 'q', 'n', 't', 'f', 'w', 'l', 'o', 'j']
+            self.charList = ['e', 'k', 'm', 'f', 'l', 'g', 'd', 'q', 'v', 'z', 'n', 't', 'o', 'w', 'y', 'h', 'x', 'u', 's', 'p', 'a', 'i', 'b', 'r', 'c', 'j']
 
         elif(setting == 2):
-            self.charList = ['u', 'r', 'h', 'm', 'v', 'n', 'g', 'f', 'y', 'x', 't', 'w', 'a', 'p', 'c', 'e', 'i', 'l', 's', 'o', 'g', 'd', 'k', 'z', 'j', 'b']
+            self.charList = ['a', 'j', 'd', 'k', 's', 'i', 'r', 'u', 'x', 'b', 'l', 'h', 'w', 't', 'm', 'c', 'q', 'g', 'z', 'n', 'p', 'y', 'f', 'v', 'o', 'e']
 
         elif(setting == 3):
-            self.charList = ['t', 'j', 'l', 'v', 'y', 'h', 'w', 'i', 'g', 'd', 'f', 'u', 'c', 'a', 'x', 'z', 'n', 'g', 'b', 'r', 'm', 's', 'p', 'o', 'k', 'e']
+            self.charList = ['b', 'd', 'f', 'h', 'j', 'l', 'c', 'p', 'r', 't', 'x', 'v', 'z', 'n', 'y', 'e', 'i', 'w', 'g', 'a', 'k', 'm', 'u', 's', 'q', 'o']
 
         self.startingPos = startingPos
-        self.currPos = startingPos
         for x in range(0, startingPos):
             self.rotate()
 
