@@ -14,9 +14,8 @@ class PlugBoard(object):
     def removePlug(self, myChar):
         if myChar != self.charList[ord(myChar) - 97]:
             tmp = self.charList[ord(myChar) - 97]
-            tmpIndex = ord(self.charList[ord(myChar) - 97])
-            self.charList[ord(myChar) - 97] = self.charList[tmpIndex]
-            self.charList[tmpIndex] = tmp
+            self.charList[ord(myChar) - 97] = self.charList[ord(tmp) - 97]
+            self.charList[ord(tmp) - 97] = tmp
             self.plugs = self.plugs - 1
 
     def checkForPlug(self, myChar):
@@ -26,3 +25,9 @@ class PlugBoard(object):
 
     def getEncriptChar(self, myChar):
         return self.charList[ord(myChar) - 97]
+
+    def getList(self):
+        return self.charList
+
+    def getNumPlugs(self):
+        return self.plugs

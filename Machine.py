@@ -74,8 +74,18 @@ class Machine(object):
         return tmpMessage
 
     def insertPlug(self, char1, char2):
+        if(self.myPlug.checkForPlug(char1)):
+            self.myPlug.removePlug(char1)
+
+        if(self.myPlug.checkForPlug(char2)):
+            self.myPlug.removePlug(char2)
+
         self.myPlug.insertPlug(char1, char2)
 
-    def removePlug(self, char1, char2):
-        self.myPlug.removePlug(char1, char2)
+
+    def getPlugBoard(self):
+        return ' '.join(self.myPlug.getList())
+
+    def getNumPlugs(self):
+        return self.myPlug.getNumPlugs()
 

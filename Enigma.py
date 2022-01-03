@@ -1,56 +1,79 @@
 import Machine
 from tkinter import *
-from pathlib import Path
 
-myMachine = Machine.Machine()
-#myMachine.insertPlug('a','z')
-#myMachine.insertPlug('e','f')
-#myMachine.insertPlug('l','b')
-#setting1 = input("please input your setting for rotor 1 ")
-#setting2 = input("please input your setting for rotor 1 ")
-#setting3 = input("please input your setting for rotor 1 ")
-#myMachine.setRotorSetting(int(setting1), int(setting2), int(setting3))
-#myChar = input("input your message that you would like to encript ")
-#myChar = myMachine.encriptMessage(myChar)
-#print(myChar)
-#myChar = input("input your message that you would like to encript ")
-#myChar = myMachine.encriptMessage(myChar)
-#print(myChar)
+class machineGUIControl(object):
+    def __init__(self):
+        self.myMachine = Machine.Machine()
+        self.root = Tk()
+        self.root.title("Enigma")
+        self.setupPlugControl()
+        self.setupSettingControl()
+        self.setupOrderControl()
+        self.setupEncription()
+        self.setupButtons()
+        self.root.mainloop()
 
-root = Tk()
-root.title("Enigma")
-textForEncription = Entry(root, width = 40)
-textForEncription.grid(row = 2, column = 0)
-setting1 = Entry(root, width = 10)
-setting1.grid(row = 1, column = 1)
-setting2 = Entry(root, width = 10)
-setting2.grid(row = 1, column = 2)
-setting3 = Entry(root, width = 10)
-setting3.grid(row = 1, column = 3)
-order1 = Entry(root, width = 10)
-order1.grid(row = 0, column = 1)
-order2 = Entry(root, width = 10)
-order2.grid(row = 0, column = 2)
-order3 = Entry(root, width = 10)
-order3.grid(row = 0, column = 3)
-inputLabel = Label(root, width = 30)
-inputLabel.grid(row = 3, column = 0)
+    def setupPlugControl(self):
+        self.plug1 = Entry(self.root, width = 10)
+        self.plug1.grid(row = 5, column = 2)
+        self.plug2 = Entry(self.root, width = 10)
+        self.plug2.grid(row = 5, column = 3)
+        self.plugLabel = Label(self.root, width = 40, text = 'Plugs: ' + self.myMachine.getPlugBoard())
+        self.plugLabel.grid(row = 5, column = 0)
+        self.plugNumLabel = Label(self.root, width = 8, text = '0/10')
+        self.plugNumLabel.grid(row = 6, column = 1)
 
-def encriptButton():
-    myMessage = myMachine.encriptMessage(textForEncription.get())
-    inputLabel.config(text = myMessage)
+    def setupSettingControl(self):
+        self.setting1 = Entry(self.root, width = 10)
+        self.setting1.grid(row = 1, column = 1)
+        self.setting2 = Entry(self.root, width = 10)
+        self.setting2.grid(row = 1, column = 2)
+        self.setting3 = Entry(self.root, width = 10)
+        self.setting3.grid(row = 1, column = 3)
 
-def changeSettings():
-    myMachine.setRotorSetting(int(setting1.get()), int(setting2.get()), int(setting3.get()))
+    def setupOrderControl(self):
+        self.order1 = Entry(self.root, width = 10)
+        self.order1.grid(row = 0, column = 1)
+        self.order2 = Entry(self.root, width = 10)
+        self.order2.grid(row = 0, column = 2)
+        self.order3 = Entry(self.root, width = 10)
+        self.order3.grid(row = 0, column = 3)
 
-def changeOrder():
-    myMachine.setOrder(int(order1.get()), int(order2.get()), int(order3.get()))
+    def setupEncription(self):
+        self.textForEncription = Entry(self.root, width = 40)
+        self.textForEncription.grid(row = 3, column = 0)
+        self.separationLabel = Label(self.root, width = 40, text = '---------------------------------------------')
+        self.separationLabel.grid(row = 2, column = 0)
+        self.inputLabel = Label(self.root, width = 30)
+        self.inputLabel.grid(row = 4, column = 0)
+        
+    def encriptButton(self):
+        myMessage = self.myMachine.encriptMessage(self.textForEncription.get())
+        self.inputLabel.config(text = myMessage)
 
-encrButton = Button(root, text = "Encript Message", command = encriptButton)
-encrButton.grid(row = 4, column = 0)
-settButton = Button(root, text = "Change Settings", command = changeSettings)
-settButton.grid(row = 1, column = 0)
-orderButton = Button(root, text = "Change Order", command = changeOrder)
-orderButton.grid(row = 0, column = 0)
+    def changeSettings(self):
+        self.myMachine.setRotorSetting(int(self.setting1.get()), int(self.setting2.get()), int(self.setting3.get()))
 
-root.mainloop()
+    def changeOrder(self):
+        self.myMachine.setOrder(int(self.order1.get()), int(self.order2.get()), int(self.order3.get()))
+
+    def insertPlug(self):
+        self.myMachine.insertPlug(self.plug1.get(), self.plug2.get())
+        self.plugLabel.config(text = 'Plugs: ' + self.myMachine.getPlugBoard())
+        self.plugNumLabel.config(text = str(self.myMachine.getNumPlugs()) + '/10')
+
+    def setupButtons(self):
+        self.encrButton = Button(self.root, text = "Encript Message", command = self.encriptButton)
+        self.encrButton.grid(row = 6, column = 0)
+        self.settButton = Button(self.root, text = "Change Settings", command = self.changeSettings)
+        self.settButton.grid(row = 1, column = 0)
+        self.orderButton = Button(self.root, text = "Change Order", command = self.changeOrder)
+        self.orderButton.grid(row = 0, column = 0)
+        self.plugButton = Button(self.root, text = "Add Plug", command = self.insertPlug, width = 8)
+        self.plugButton.grid(row = 5, column = 1)
+
+
+enigmaProgram = machineGUIControl()
+
+
+
