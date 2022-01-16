@@ -30,6 +30,13 @@ class machineGUIControl(object):
         self.setting2.grid(row = 1, column = 2)
         self.setting3 = Entry(self.root, width = 10)
         self.setting3.grid(row = 1, column = 3)
+        self.set1Label = Label(self.root, width = 4, text = self.myMachine.getSetting(1))
+        self.set1Label.grid(row = 2, column = 1)
+        self.set2Label = Label(self.root, width = 4, text = self.myMachine.getSetting(1))
+        self.set2Label.grid(row = 2, column = 2)
+        self.set3Label = Label(self.root, width = 4, text = self.myMachine.getSetting(1))
+        self.set3Label.grid(row = 2, column = 3)
+
 
     def setupOrderControl(self):
         self.order1 = Entry(self.root, width = 10)
@@ -50,9 +57,15 @@ class machineGUIControl(object):
     def encriptButton(self):
         myMessage = self.myMachine.encriptMessage(self.textForEncription.get())
         self.inputLabel.config(text = myMessage)
+        self.set1Label.config(text = self.myMachine.getSetting(1))
+        self.set2Label.config(text = self.myMachine.getSetting(2))
+        self.set3Label.config(text = self.myMachine.getSetting(3))
 
     def changeSettings(self):
         self.myMachine.setRotorSetting(int(self.setting1.get()), int(self.setting2.get()), int(self.setting3.get()))
+        self.set1Label.config(text = self.myMachine.getSetting(1))
+        self.set2Label.config(text = self.myMachine.getSetting(2))
+        self.set3Label.config(text = self.myMachine.getSetting(3))
 
     def changeOrder(self):
         self.myMachine.setOrder(int(self.order1.get()), int(self.order2.get()), int(self.order3.get()))

@@ -13,8 +13,8 @@ class Rotor(object):
         else:
             self.charList = ['e', 'k', 'm', 'f', 'l', 'g', 'd', 'q', 'v', 'z', 'n', 't', 'o', 'w', 'y', 'h', 'x', 'u', 's', 'p', 'a', 'i', 'b', 'r', 'c', 'j']
 
-        self.startingPos = startingPos
-        for x in range(0, startingPos):
+        self.position = startingPos
+        for x in range(1, startingPos):
             self.rotate()
 
     def rotate(self):
@@ -22,6 +22,10 @@ class Rotor(object):
         for x in range(25, 0, -1):
             self.charList[x] = self.charList[x - 1]
         self.charList[0] = tmp
+        if(self.position == 26):
+            self.position = 1
+        else:
+            self.position = self.position + 1
 
     def getEncriptChar(self, myChar):
         return self.charList[ord(myChar) - 97]
@@ -31,4 +35,7 @@ class Rotor(object):
         while self.charList[i] != myChar:
             i = i + 1
         return (chr(i + 97))
+
+    def getPos(self):
+        return self.position
 

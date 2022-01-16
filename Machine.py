@@ -7,14 +7,14 @@ class Machine(object):
     def __init__(self):
         self.count1 = 0
         self.count2 = 0
-        self.myRotor1 = Rotor.Rotor(1, 0)
-        self.myRotor2 = Rotor.Rotor(2, 0)
-        self.myRotor3 = Rotor.Rotor(3, 0)
+        self.myRotor1 = Rotor.Rotor(1, 1)
+        self.myRotor2 = Rotor.Rotor(2, 1)
+        self.myRotor3 = Rotor.Rotor(3, 1)
         self.myReflector = Reflector.Reflector()
         self.myPlug = PlugBoard.PlugBoard()
-        self.setting1 = 0
-        self.setting2 = 0
-        self.setting3 = 0
+        self.setting1 = 1
+        self.setting2 = 1
+        self.setting3 = 1
         self.rotor1 = 1
         self.rotor2 = 2
         self.rotor3 = 3
@@ -88,4 +88,14 @@ class Machine(object):
 
     def getNumPlugs(self):
         return self.myPlug.getNumPlugs()
+
+    def getSetting(self, num):
+        if(num == 1):
+            return self.myRotor1.getPos()
+
+        if(num == 2):
+            return self.myRotor2.getPos()
+
+        if(num == 3):
+            return self.myRotor3.getPos()
 
