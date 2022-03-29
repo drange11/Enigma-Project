@@ -13,7 +13,7 @@ class Rotor(object):
         else:
             self.charList = ['e', 'k', 'm', 'f', 'l', 'g', 'd', 'q', 'v', 'z', 'n', 't', 'o', 'w', 'y', 'h', 'x', 'u', 's', 'p', 'a', 'i', 'b', 'r', 'c', 'j']
 
-        self.position = startingPos
+        self.position = 1
         for x in range(1, startingPos):
             self.rotate()
 

@@ -5,8 +5,8 @@ import PlugBoard
 class Machine(object):
 
     def __init__(self):
-        self.count1 = 0
-        self.count2 = 0
+        self.count1 = 1
+        self.count2 = 1
         self.myRotor1 = Rotor.Rotor(1, 1)
         self.myRotor2 = Rotor.Rotor(2, 1)
         self.myRotor3 = Rotor.Rotor(3, 1)
@@ -59,11 +59,11 @@ class Machine(object):
     def doRotates(self):
         self.count1 = self.count1 + 1
         self.myRotor1.rotate()
-        if self.count1 > 24:
+        if self.count1 > 25:
             self.count2 = self.count2 + 1
             self.count1 = 0
             self.myRotor2.rotate()
-            if self.count2 > 24:
+            if self.count2 > 25:
                 self.count2 = 0
                 self.myRotor3.rotate()
     

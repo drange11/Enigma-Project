@@ -1,6 +1,13 @@
+#Created by Darian Range
+#Source includes https://www.cs.cornell.edu/courses/cs3110/2015fa/a1/a1.html#:~:text=The%20standard%20rotor%20I%20from,M'%2C%20and%20so%20on.
+#Should mimic the encryption of the WW2 german encryption machine given the nickname
+#the enigma machine.
+
 import Machine
 from tkinter import *
 
+# is the class that controls the GUI different parts are separated and
+# organized into different functions.
 class machineGUIControl(object):
     def __init__(self):
         self.myMachine = Machine.Machine()
